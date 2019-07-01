@@ -32,15 +32,23 @@
     <style>
       html {
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         background-image: url(/images/bg-intro-desktop.png);
-        background-color: hsl(0, 100%, 74%);
+        background-color: hsl(0, 100%, 74%, 0.5);
       }
 
       body {
+        height: 100%;
         font-family: "Poppins", snans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      @media (max-width: 767.98px) {
+        body .mobile {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
       .attribution {
@@ -78,21 +86,47 @@
       .blueBackgroundNotice {
         height: 50px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         border-radius: 5px;
         background-color: hsl(248, 32%, 49%);
         color: white;
       }
 
+      .blueBackgroundNotice p {
+        margin: 5px;
+        text-align: center;
+      }
+
       .formBox {
         border-radius: 5px;
+      }
+
+      input:invalid {
+        visibility: visible;
+        color: hsl(0, 100%, 74%);
+      }
+
+      .formInputs {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .formInputs p {
+        visibility: hidden;
+        height: auto;
+        margin-top: 5px;
+        text-align: right;
+        font-size: 10px;
+        color: hsl(0, 100%, 74%);
       }
     </style>
   </head>
 
   <body class="container transparent">
-    <div class="row align-items-center ">
+    <div class="row align-items-center mobile">
       <div class="col p-4">
         <h1 class="pb-4"><strong>Learn to code by watching others</strong></h1>
 
@@ -112,17 +146,21 @@
 
         <div class="p-3 bg-light border formBox">
           <form>
-            <div>
+            <div class="formInputs">
               <label for="firstName"></label>
               <input
                 type="text"
                 class="form-control firstName"
                 placeholder="First Name"
+                value="<i class= 'fas fa-exclamation-circle' ></i>"
                 required
               />
+              <p>
+                <i>First Name cannot be empty</i>
+              </p>
             </div>
 
-            <div>
+            <div class="formInputs">
               <label for="lastName"></label>
               <input
                 type="text"
@@ -130,9 +168,12 @@
                 placeholder="Last Name"
                 required
               />
+              <p>
+                <i>Last Name cannot be empty</i>
+              </p>
             </div>
 
-            <div>
+            <div class="formInputs">
               <label for="email"></label>
               <input
                 type="email"
@@ -140,9 +181,12 @@
                 placeholder="Email Address"
                 required
               />
+              <p>
+                <i>Looks like this is not an email</i>
+              </p>
             </div>
 
-            <div>
+            <div class="formInputs">
               <label for="password"></label>
               <input
                 type="password"
@@ -150,6 +194,9 @@
                 placeholder="Password"
                 required
               />
+              <p>
+                <i>Password cannot be empty</i>
+              </p>
             </div>
 
             <div class="d-flex justify-content-center">
